@@ -1,5 +1,5 @@
 .image-slider{
-    height: 80vh;
+    height: 100%;
     position: relative;
     overflow: hidden;
 
@@ -27,15 +27,20 @@
         position: absolute;
         margin: auto 0;
         top: 0; bottom: 0;
-        height: 4em;
+        height: 2.5em;
         width: 100%;
 
         .image-slider-button{
-            width: 4em;
-            height: 4em;
+            width: 2.5em;
+            height: 100%;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
+            transition: 0.33s transform ease-in-out;
+
+            &:hover{
+                transform: scale(1.25);
+            }
 
             &.image-slider-button-left{
                 float: left;
