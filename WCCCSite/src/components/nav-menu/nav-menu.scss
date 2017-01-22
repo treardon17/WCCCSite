@@ -1,0 +1,69 @@
+@import '../../resources/sass/_fonts.scss';
+@import '../../resources/sass/_colors.scss';
+.nav-menu{
+    display: inline-block;
+
+    .nav-menu-main{ //main bar with about, giving, programs, etc...
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: $white;
+        font-family: $open-sans;
+
+        .nav-menu-main-li{
+            float: left;
+
+            &:hover{   // telling the main menu tab what to do when mouse hovers
+                
+                >a{
+                    font-weight:700; 
+                    background-color: $gray;
+                }
+
+                .nav-menu-main-child li{ //teiile the main menu child what to do what the tab is hovered over
+                    display: block;
+                    background-color: $gray;
+                    padding: 0;
+                    &:hover {
+                        font-weight: 700;
+                    }
+
+                    &:first-child{
+                        border-top: 3px solid $blue;
+                    }
+                   
+                   &:after{
+                       content: " ";
+                       display:block;
+                       clear: both;
+                   }
+                   a{
+                       float: left;
+                   }
+                    
+                }
+            }
+
+            .nav-menu-main-child{
+                position: absolute;
+                padding: 0;
+                
+                li{
+                    display: none;
+                    text-align: left;
+                }
+            }
+             
+            a {
+                display: block;
+                color: $black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none; 
+            }
+        }
+    }
+
+
+}
