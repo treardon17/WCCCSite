@@ -1,3 +1,10 @@
+include ../../util/include/include-script
++include-script('/resources/js/image-slider.js')
 div(class="image-slider")
-    a(class="image-slider-image" style="background-image: url('../../resources/images/IMG_9730.JPG')")
-    a(class="image-slider-image" style="background-image: url('../../resources/images/IMG_9425.JPG')")
+    div(class="image-slider-images")
+        a(class="image-slider-image" style="background-image: url('../../resources/images/IMG_9730.JPG')")
+        a(class="image-slider-image" style="background-image: url('../../resources/images/IMG_9425.JPG')")
+
+    div(class="image-slider-buttons")
+        a(href="#" class="image-slider-button image-slider-button-left" style="background-image: url('../../resources/images/left-arrow.png')")
+        a(href="#" class="image-slider-button image-slider-button-right" style="background-image: url('../../resources/images/right-arrow.png')")
