@@ -57,7 +57,7 @@ gulp.task('pug-pages', ()=>{
         }
     }))
     .pipe(rename({
-        extname: '.php'
+        //extname: '.php'
     }))
     .pipe(gulp.dest(paths.build.root));
 });
@@ -71,7 +71,7 @@ gulp.task('pug-components', ()=>{
     }))
     .pipe(rename({
         dirname: '',
-        extname: '.php'
+        //extname: '.php'
     }))
     .pipe(gulp.dest(paths.build.partials));
 });
@@ -158,4 +158,4 @@ gulp.task('watch',()=>{
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'php-forms']);
 
 //Default task
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['browser-sync-html', 'watch']);
