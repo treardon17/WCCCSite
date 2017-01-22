@@ -1,12 +1,48 @@
 .image-slider{
     height: 80vh;
     position: relative;
+    overflow: hidden;
 
-    .image-slider-image{
+    .image-slider-images{
+        width: 100%;
+        height: 100%;
+
+        .image-slider-image{    
+            position: absolute;
+            top: 0; bottom: 0; left: 0; right: 0;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: opacity 1s ease-in-out, transform 15s ease-in-out;
+            opacity: 0;
+
+            &.image-slider-image-active{
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+    }
+
+    .image-slider-buttons{
         position: absolute;
-        top: 0; bottom: 0; left: 0; right: 0;
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
+        margin: auto 0;
+        top: 0; bottom: 0;
+        height: 4em;
+        width: 100%;
+
+        .image-slider-button{
+            width: 4em;
+            height: 4em;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            &.image-slider-button-left{
+                float: left;
+            }
+            &.image-slider-button-right{
+                float: right;
+            }
+        }
     }
 }
