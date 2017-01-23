@@ -1,0 +1,10 @@
+div(class="who-we-are")
+    h1(class="title-heading") Who We Are
+    div(class="who-we-are-content")
+        each person in whoWeAre.people
+            div(class="who-we-are-person")
+                div(class="who-we-are-picture" style="background-image: url(" + person.photo + ")")
+                h4(class="who-we-are-name") #{person.name}
+                p(class="who-we-are-title") #{person.title}
+                p(class="who-we-are-phone") #{person.phone}
+                    
