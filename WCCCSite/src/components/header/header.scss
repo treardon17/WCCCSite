@@ -3,11 +3,22 @@ header{
     width: 100%;
     text-align: right;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
+    .logo-container{
+        height: 7em;
+        width: 7em;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        align-self: flex-start;
+        display: inline-block;
+    }
     
     .nav-menu{
         margin-right: 2em;
         z-index: 1000;
         align-self: flex-end;
+        display: inline-block;
     }
 }
