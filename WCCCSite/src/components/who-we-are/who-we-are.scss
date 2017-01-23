@@ -4,6 +4,7 @@
 .who-we-are{
     position: relative;
     font-family: $open-sans;
+    overflow: hidden;
 
     h1{
         width: 100%;
@@ -17,9 +18,15 @@
     }
 
     .who-we-are-content{
-        
+        position: relative;
         width: 80%;
         margin: 0 auto;
+
+        &:after{
+            content: " ";
+            clear: both;
+            display: block;
+        }
 
         .who-we-are-person{
             margin: 2em 0;
