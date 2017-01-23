@@ -1,6 +1,5 @@
 
 header{
-    height: 50vh;
     width: 100%;
     text-align: right;
     display: flex;
@@ -10,9 +9,5 @@ header{
         margin-right: 2em;
         z-index: 1000;
         align-self: flex-end;
-    }
-    .image-slider{
-        z-index: 0;
-        flex-grow: 1;
     }
 }
