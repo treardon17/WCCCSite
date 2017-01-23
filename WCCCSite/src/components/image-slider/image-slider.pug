@@ -3,9 +3,15 @@ include ../../util/include/include-script
 div(class="image-slider parallax-container")
     div(class="image-slider-content parallax-element")
         div(class="image-slider-images")
-            a(class="image-slider-image" style="background-image: url('../../resources/images/IMG_9730.JPG')")
-            a(class="image-slider-image" style="background-image: url('../../resources/images/IMG_9425.JPG')")
+            each image in imageSlider.images
+                a(class="image-slider-image" style="background-image: url('"+image.src+"')")
 
         div(class="image-slider-buttons")
             a(href="#" class="image-slider-button image-slider-button-left" style="background-image: url('../../resources/images/left-arrow.png')")
             a(href="#" class="image-slider-button image-slider-button-right" style="background-image: url('../../resources/images/right-arrow.png')")
+
+        div(class="image-slider-indexes")
+            -let index = 0
+            each image in imageSlider.images
+                a(href="#" class="image-slider-index" imageIndex=index)
+                -index++
