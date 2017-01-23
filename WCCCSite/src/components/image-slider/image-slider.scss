@@ -36,7 +36,7 @@
             position: absolute;
             margin: auto 0;
             top: 0; bottom: 0;
-            height: 2.5em;
+            height: 1.5em;
             width: 100%;
 
             .image-slider-button{
@@ -64,7 +64,7 @@
     .image-slider-indexes{
         position: absolute;
         bottom: 0; right: 0; left: 0;
-        width: 30%;
+        width: 20%;
         height: 2em;
         margin: 0 auto;
         display: flex;
@@ -74,8 +74,8 @@
         .image-slider-index{
             background-color: white;
             border-radius: 100%;
-            width: 0.5em;
-            height: 0.5em;
+            width: 0.35em;
+            height: 0.35em;
             border: 2px solid black;
             transition: background-color 0.33s ease-in-out;
 
