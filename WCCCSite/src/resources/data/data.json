@@ -1,4 +1,12 @@
 {
+    "imageSlider":{
+        "images":[
+            {"src": "./resources/images/image-slider/baby.jpg"},
+            {"src": "./resources/images/image-slider/girls.jpg"},
+            {"src": "./resources/images/image-slider/kids.jpg"},
+            {"src": "./resources/images/image-slider/orange_shirt_boy.jpg"}
+        ]
+    },
     "whoWeAre":{
         "people":[
             {"name": "Kim Ferraro", "title": "Executive Director", "phone": "509-323-7480", "photo":"./resources/images/who-we-are/kim_ferraro.png"},
