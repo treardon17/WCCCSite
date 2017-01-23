@@ -1,4 +1,14 @@
+@import './_fonts.scss';
+
 body{
     margin: 0;
     padding: 0;
+}
+
+.title-heading{
+    font-family: $alegreya;
+    font-size: 3em;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
 }

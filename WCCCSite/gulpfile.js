@@ -2,8 +2,11 @@
 // ─── DEPENDENCIES ───────────────────────────────────────────────────────────────
 //
 var gulp = require('gulp');
+var _ = require('lodash');
 var path = require('path');
+var fs = require('fs');
 var pug = require('gulp-pug');
+var data = require('gulp-data');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var php = require('gulp-connect-php');
@@ -18,7 +21,9 @@ var argv = require('yargs').argv;
 //
 // ─── GULP PARAMETERS ────────────────────────────────────────────────────────────
 //
-var isWordPress = (argv.wordpress == undefined) ? false : true;
+var statics = {
+    wordpress: (argv.wordpress == undefined) ? false : true
+}
 // ────────────────────────────────────────────────────────────────────────────────
 
 //
@@ -39,6 +44,7 @@ var paths = {
         components: './src/components/',
         images: './src/resources/images/',
         forms: './src/resources/forms/',
+        data: './src/resources/data/data.json',
     }
 }
 // ────────────────────────────────────────────────────────────────────────────────
@@ -50,14 +56,16 @@ var paths = {
 //File names will match --> index.pug == index.php
 gulp.task('pug-pages', ()=>{
     return gulp.src(paths.dev.pages + '**/*.pug')
+    .pipe(data(()=>{
+        let jsonFile = JSON.parse(fs.readFileSync(paths.dev.data));
+        var data = _.assign({}, jsonFile, statics);
+        return data;
+    }))
     .pipe(pug({
         pretty: true,
-        locals:{
-            wordpress: isWordPress
-        }
     }))
     .pipe(rename({
-        extname: '.php'
+        //extname: '.php'
     }))
     .pipe(gulp.dest(paths.build.root));
 });
@@ -66,12 +74,17 @@ gulp.task('pug-pages', ()=>{
 // called 'partials'
 gulp.task('pug-components', ()=>{
     return gulp.src(paths.dev.components + '**/*.pug')
+    .pipe(data(()=>{
+        let jsonFile = JSON.parse(fs.readFileSync(paths.dev.data));
+        var data = _.assign({}, jsonFile, statics);
+        return data;
+    }))
     .pipe(pug({
         pretty: true
     }))
     .pipe(rename({
         dirname: '',
-        extname: '.php'
+        //extname: '.php'
     }))
     .pipe(gulp.dest(paths.build.partials));
 });
@@ -112,7 +125,7 @@ gulp.task('php-forms', ()=>{
 
 //Optimize images
 gulp.task('images', ()=>{
-    return gulp.src(paths.dev.images+'*')
+    return gulp.src(paths.dev.images+'**/*')
     .pipe(imagemin())
     .pipe(gulp.dest(paths.build.images));
 });
@@ -158,4 +171,4 @@ gulp.task('watch',()=>{
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'php-forms']);
 
 //Default task
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['browser-sync-html', 'watch']);

@@ -1,0 +1,57 @@
+@import '../../resources/sass/_fonts.scss';
+@import '../../resources/sass/_colors.scss';
+
+.who-we-are{
+    position: relative;
+    font-family: $open-sans;
+    overflow: hidden;
+
+    h1{
+        width: 100%;
+        text-align: center;
+    }
+
+    &:after{
+        content: " ";
+        clear: both;
+        display: block;
+    }
+
+    .who-we-are-content{
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+
+        &:after{
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        .who-we-are-person{
+            margin: 2em 0;
+            padding: 0;
+            width: percentage(1/3);
+            float: left;
+            text-align: center;
+
+            .who-we-are-picture{
+                margin: 0 auto;
+                border-radius: 100%;
+                width: 75%;
+                padding-bottom: 75%;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            .who-we-are-name{
+                margin: 0.5em 0;
+                text-transform: uppercase;
+            }
+            .who-we-are-title, .who-we-are-phone{
+                margin: 0;
+                font-size: 0.75em;
+            }
+        }
+    }
+}

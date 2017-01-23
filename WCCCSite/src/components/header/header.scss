@@ -2,8 +2,12 @@
 header{
     width: 100%;
     text-align: right;
+    display: flex;
+    flex-direction: column;
     
     .nav-menu{
         margin-right: 2em;
+        z-index: 1000;
+        align-self: flex-end;
     }
 }

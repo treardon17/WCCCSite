@@ -1,0 +1,29 @@
+
+div(class="contact-form")
+    p CONTACT
+    p Main Number:  509.326.9540
+    p Fax:          509.326.2347
+    p Address:      1603 N. Belt Street, Spokane, Washington 99205
+    form(action="contact-form")
+      p Name
+      p First name:
+      input(type="text" name="firstname")
+      p Last name:
+      input(type="text" name="last name")
+      P Email:
+      input(type="text" name="Email")
+      p Phone:
+      input(type="text" name="phone")
+      p Department:
+        select(name="Department")
+          option(value="Accounting") Accounting
+          option(value="General Information") General Information
+          option(value="Room Rental") Room Rental
+          option(value="Executive Director") Executive Director
+          option(value="Human Resources") Human Resources
+          option(value="WIC") WIC
+          option(value="Youth Development/Recreation") Youth Development/Recreation
+          option(value="Learning Skills/Community Access") Learning Skills/Community Acess
+      p Message:
+      input(class="contact-form-message" type="text" name="Message")
+      input(type="Submit" value="Submit" class="submit-button")
