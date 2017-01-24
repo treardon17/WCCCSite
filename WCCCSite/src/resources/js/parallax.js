@@ -13,19 +13,20 @@ class ParallaxPage{
         this.currentScrollDirection = 0;
     }
 
+    //This should be placed inside of a $(window).scroll(()=>{})
     handleScroll(){
         if(this.parallaxContainers.length == 0) { return; };
         for(let i = 0; i < this.parallaxContainers.length; i++){
             let container = this.parallaxContainers[i].container;
             let elements = this.parallaxContainers[i].elements;
 
+            //check if the element we're observing is in the current viewport
             this.checkElementInView(container,{
+                //if the top of the window is in the middle of the element we're observing,
+                //move the elements and change their opacity
                 middleCallback: (percentComplete)=>{
                     this.moveElements(elements, -percentComplete*250);
                     this.opacityElements(elements, 1-percentComplete);
-                },
-                bottomProgressCallback: (percentComplete)=>{
-                    
                 }
             })
         }
@@ -45,13 +46,14 @@ class ParallaxPage{
 
     //Checks to see if an element is above, within, or below the current scroll offset
     checkElementInView(elementSelector, cbObject){
-        var top  = window.pageYOffset || document.documentElement.scrollTop;
-        var bottom = top + $(window).height();
+        var top  = window.pageYOffset || document.documentElement.scrollTop;    //top of the window
+        var bottom = top + $(window).height();                                  //bottom of the window
 
         var element = $(elementSelector);       //div being observed
         var height = $(element).outerHeight();  //height of the element
         var offset = $(element).offset().top;   //the top of the element
 
+        //this will prevent the new top from being set 
         if(top % 2 == 0){
             //will be -1 if scrolling down, 1 if scrolling up
             if(this.previousTop < top){
@@ -59,28 +61,29 @@ class ParallaxPage{
             }else if(this.previousTop > top){
                 this.currentScrollDirection = 1
             }
+            //remember where the previous top is
+            this.previousTop = top;
         }
 
-        this.previousTop = top;
-
         if(top >= offset && top < offset + height){
-            //if the top of the viewport is in the middle of the element
+            //if the top of the viewport is in the middle of the element we're observing
             if(typeof cbObject.middleCallback === 'function'){
                 let percentComplete = (top - offset)/height;
                 cbObject.middleCallback(percentComplete);
             }
         }else if(top - offset < height){
-            //if the viewport is above the view
+            //if the viewport is above the view we're observing
             if(typeof cbObject.aboveCallback === 'function'){
                 cbObject.aboveCallback();
             }
         }else if (top > offset + height){
-            //if the viewport is below the view
+            //if the viewport is below the view we're observing
             if(typeof cbObject.belowCallback === 'function'){
                 cbObject.belowCallback();
             }
         }
 
+        //if the bottom of the window is in the middle of the element we're observing
         if(bottom >= offset && bottom < offset+height){
             if(typeof cbObject.bottomProgressCallback === 'function'){
                 let percentComplete = (bottom - offset)/height
@@ -90,6 +93,8 @@ class ParallaxPage{
     }
 }
 
+//when the document has been loaded, make a parallax page
+//call the handleScroll function on every scroll event
 $(document).ready(()=>{
     let parallax = new ParallaxPage();
     $(window).scroll(()=>{ 
