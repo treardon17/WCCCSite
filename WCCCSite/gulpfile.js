@@ -24,6 +24,7 @@ var argv = require('yargs').argv;
 var statics = {
     wordpress: (argv.wordpress == undefined) ? false : true
 }
+var isPHP = (argv.php == undefined) ? false : true;
 // ────────────────────────────────────────────────────────────────────────────────
 
 //
@@ -65,7 +66,7 @@ gulp.task('pug-pages', ()=>{
         pretty: true,
     }))
     .pipe(rename({
-        //extname: '.php'
+        extname: isPHP ? '.php' : '.html'
     }))
     .pipe(gulp.dest(paths.build.root));
 });
@@ -84,7 +85,7 @@ gulp.task('pug-components', ()=>{
     }))
     .pipe(rename({
         dirname: '',
-        //extname: '.php'
+        extname: isPHP ? '.php' : '.html'
     }))
     .pipe(gulp.dest(paths.build.partials));
 });
@@ -132,16 +133,15 @@ gulp.task('images', ()=>{
 
 //Start a php server so we can look at our generated php files
 gulp.task('php-serve', ()=>{
-    php.server({base: paths.build.root, port: 8010, keepalive: true});
+    php.server({base: paths.build.root, port: 8020, keepalive: true});
 });
 
 //Set up browser-sync server
 gulp.task('browser-sync', ['sass', 'pug', 'js', 'images', 'php-forms', 'php-serve'], ()=>{
     browserSync.init({
-        proxy: '127.0.0.1:8010',
+        proxy: '127.0.0.1:8020',
         port: 8080,
         open: true,
-        notify: false
     });
 });
 
@@ -171,4 +171,8 @@ gulp.task('watch',()=>{
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'php-forms']);
 
 //Default task
-gulp.task('default', ['browser-sync-html', 'watch']);
+if(isPHP){
+    gulp.task('default', ['browser-sync', 'watch']);
+}else{
+    gulp.task('default', ['browser-sync-html', 'watch']);
+}
