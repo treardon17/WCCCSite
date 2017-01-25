@@ -1,24 +1,28 @@
+@import '../../resources/sass/_colors.scss';
 
 header{
-    width: 100%;
-    text-align: right;
-    display: flex;
-    flex-direction: row;
+    position: fixed;
+    left: 0; right: 0;
+    z-index: 5000;
+    height: 3em;
 
-    .logo-container{
-        height: 7em;
-        width: 7em;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        align-self: flex-start;
-        display: inline-block;
+    .header-background{
+        transition: 1s ease-in-out;
+
+        &.header-background-active{
+            height: 100%;
+            width: 100%;
+            background-color: $blue;
+            opacity: 0.8;
+        }
     }
     
+
     .nav-menu{
-        margin-right: 2em;
-        z-index: 1000;
-        align-self: flex-end;
         display: inline-block;
+        margin-right: 1em;
+        position: absolute;
+        top: 0; bottom: 0; right: 0;
+        margin: auto 1em;
     }
 }
