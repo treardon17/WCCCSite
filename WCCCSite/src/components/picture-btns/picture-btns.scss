@@ -1,0 +1,60 @@
+.picBtns {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    .btn{
+        display: inline-block;
+        margin: 10px;
+        border: none;
+        color: transparent;
+        font-family: Constantia;
+        font-size: 30px;
+        height: 250px;
+        @media screen and (max-width: "850px"){
+            margin: 5px;
+            height: 200px;
+            padding-top: 150px;
+        }
+        .lb{
+            height: 40px;
+            background-color:black;
+            margin-top: 175px;
+            visibility: hidden;
+        }
+    }
+    #resources{
+        width:25%;
+        background: url('/resources/images/res.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    #giving{
+        width:25%;
+        background: url('/resources/images/give.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    #calendar{
+        width:51.5%;
+        background: url('/resources/images/building_dreams.JPG');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    #about{
+        width:40%;
+        background: url('/resources/images/about.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    #programs{
+        width:40%;
+        background: url('/resources/images/WIC-4.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+}
