@@ -7,9 +7,11 @@ function handleHeaderScroll(){
     }
 }
 
+var throttledUpdate = _.throttle(handleHeaderScroll, 100)
+
 $(document).ready(()=>{
     handleHeaderScroll();
     $(window).scroll(()=>{
-        handleHeaderScroll();   
+        throttledUpdate();
     });
 });
