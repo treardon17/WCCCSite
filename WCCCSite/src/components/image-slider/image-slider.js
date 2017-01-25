@@ -2,8 +2,15 @@ class ImageSlider{
     constructor(imageSliderElement){
         this.time = 0; //rotation time
         this.timeout = null; //timer
+        this.sloganTimeout = null; //timer for the logo fading
         this.images = $(imageSliderElement).find('.image-slider-image');
         this.indices = $(imageSliderElement).find('.image-slider-index');
+        
+        this.slogan = $(imageSliderElement).find('.image-slider-slogan');
+        if(this.slogan.length > 0){
+            this.slogan = this.slogan[0];
+        }
+
         if(this.images.length > 0){
             this.currentIndex = 0;
         }
@@ -14,32 +21,65 @@ class ImageSlider{
     setupListeners(imageSliderElement){
         //Side buttons
         $(imageSliderElement).find('.image-slider-button-right').click((event)=>{
+            event.preventDefault();
             this.handleRightButton();
         });
         $(imageSliderElement).find('.image-slider-button-left').click((event)=>{
+            event.preventDefault();
             this.handleLeftButton();
         });
 
         //Indices
-        $(imageSliderElement).find('.image-slider-index').click((event)=>{
+        $(this.indices).click((event)=>{
+            event.preventDefault();
             this.handleIndexClicked(event);
         });
     }
 
     handleIndexClicked(event){
+        this.timedSloganHide();
         this.clearClock();
         let index = $(event.target).attr('imageIndex');
         this.changeImageToIndex(index);
     }
 
     handleRightButton(){
+        this.timedSloganHide();
         this.clearClock();
         this.nextImage();
     }
 
     handleLeftButton(){
+        this.timedSloganHide();
         this.clearClock();
         this.prevImage();
+    }
+
+    //hides the logo for a set amount of time
+    timedSloganHide(){
+        this.hideSlogan();
+        //if we haven't made a timer yet, make one
+        //otherwise, reset a previous timer
+        if(this.sloganTimeout != null){
+            clearTimeout(this.sloganTimeout);
+        }
+        this.sloganTimeout = setTimeout(()=>{
+            this.showSlogan();
+        },this.time)
+    }
+
+    hideSlogan(){
+        if(this.slogan){
+            $(this.slogan).addClass('image-slider-slogan-hidden');
+            $(this.images).addClass('image-slider-image-bright');
+        }
+    }
+
+    showSlogan(){
+        if(this.slogan){
+            $(this.slogan).removeClass('image-slider-slogan-hidden');
+            $(this.images).removeClass('image-slider-image-bright');
+        }
     }
 
     //Clears the clock and restarts the rotation if there is one

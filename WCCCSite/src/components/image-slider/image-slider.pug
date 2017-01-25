@@ -1,10 +1,14 @@
 include ../../util/include/include-script
 +include-script('/resources/js/image-slider.js')
 div(class="image-slider parallax-container")
+    div(class="image-slider-slogan")
+        div(class="logo-container" style="background-image: url('./resources/images/main_logo.png')")
+        h1(class="image-slider-title") West Central Community Center
+        h6(class="image-slider-tag") Turning uncertainty into certainty
     div(class="image-slider-content parallax-element")
         div(class="image-slider-images")
             each image in imageSlider.images
-                a(class="image-slider-image" style="background-image: url('"+image.src+"')")
+                a(class="image-slider-image vignette" style="background-image: url('"+image.src+"')")
 
         div(class="image-slider-buttons")
             a(href="#" class="image-slider-button image-slider-button-left" style="background-image: url('../../resources/images/left-arrow.png')")
