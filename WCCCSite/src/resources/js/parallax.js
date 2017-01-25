@@ -97,7 +97,11 @@ class ParallaxPage{
 //call the handleScroll function on every scroll event
 $(document).ready(()=>{
     let parallax = new ParallaxPage();
+    var throttledUpdate = _.throttle(()=>{
+        parallax.handleScroll();
+    }, 10)
+
     $(window).scroll(()=>{ 
-        parallax.handleScroll(); 
+        throttledUpdate();
     });
 });
