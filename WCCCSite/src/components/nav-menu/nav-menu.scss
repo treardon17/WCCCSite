@@ -8,8 +8,9 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: $white;
         font-family: $open-sans;
+        color: $white;
+
 
         .nav-menu-main-li{
             float: left;
@@ -18,7 +19,6 @@
                 
                 >a{
                     font-weight:700; 
-                    background-color: $gray;
                     color: $white;
                 }
 
@@ -62,10 +62,11 @@
              
             a {
                 display: block;
-                color: $black;
+                color: $white;
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none; 
+                text-transform: lowercase;
             }
         }
     }
